@@ -161,13 +161,13 @@ typedef enum IRQn_Type
  * @param val new bit(s) value
  */
 #define BITS_EDIT(reg, width, msb, lsb, val) do { \
-    u(width) reg_old  = (reg);                              /* get old register value */ \
-    u(64)    mask     = ~((u(64))(0));                      /* build full mask */ \
-    u(64)    reg_mask = (mask << ((msb)+1))                 /* left mask */ \
-                        |(mask >> ((width) - (lsb)));       /* right mask */ \
-    u(width) reg_new  = (reg_old & reg_mask)                /* reset old register bit(s) */ \
-                        |(((val) << (lsb)) & (~reg_mask));  /* shift value, and AND NOT(reg_mask) for safe */ \
-    (reg) = reg_new;                                        /* assign new register value */ \
+    u(width) _reg_old  = (reg);                              /* get old register value */ \
+    u(64)    _mask     = ~((u(64))(0));                      /* build full mask */ \
+    u(64)    _reg_mask = (_mask << ((msb)+1))                /* left mask */ \
+                        |(_mask >> ((width) - (lsb)));       /* right mask */ \
+    u(width) _reg_new  = (_reg_old & _reg_mask)              /* reset old register bit(s) */ \
+                        |(((val) << (lsb)) & (~_reg_mask));  /* shift value, and AND NOT(reg_mask) for safe */ \
+    (reg) = _reg_new;                                        /* assign new register value */ \
 }while(0)
 
 /**
