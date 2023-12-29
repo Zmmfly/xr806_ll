@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #define __CM33_REV          0x0000U
 #define __FPU_PRESENT       1
@@ -200,24 +201,24 @@ typedef struct
 
 typedef struct
 {
-    __IO u(32) LDO_TOP_CTRL;            /* TOP_LDO and SMPS control register */
-    __IO u(32) LDO_SW_CTRL;             /* LDO and switch control register */
-    __IO u(32) LFCLK_CTRL;              /* Low speed clock control register */
-    __IO u(32) HSE_CTRL;                /* High speed clock crystal selector register */
-    __IO u(32) LSI_CALIB_CTRL;          /* RC oscillator calibration control register */
-    __IO u(32) RESERVED0[3];
-    __IO u(32) PLL_CTRL;                /* PLL control register */
-    __IO u(32) SYS_CLK1_CTRL;           /* System clock 1 control register */
-    __IO u(32) SYS_CLK3_CTRL;           /* System clock 3 control register */
-    __IO u(32) RESERVED1;
-    __IO u(32) AUDIO_CLK_CTRL;          /* offset: 0x0034, Audio clock control register */
-    __IO u(32) RESERVED2[3];
-    __IO u(32) RESERVED3[5];
+    __IO u(32) TLDO_CTRL;               /* offset: 0x0000, TOP_LDO and SMPS control register */
+    __IO u(32) LDO_MISC;                /* offset: 0x0004, LDO and switch control register */
+    __IO u(32) LFCLK_CTRL;              /* offset: 0x0008, Low speed clock control register */
+    __IO u(32) HSE_CTRL;                /* offset: 0x000C, High speed clock crystal selector register */
+    __IO u(32) LSI_CALIB_CTRL;          /* offset: 0x0010, RC oscillator calibration control register */
+    __IO u(32) RESERVED0[3];            /* offset: 0x0014, ~ 0x001C */
+    __IO u(32) PLL_CTRL;                /* offset: 0x0020, PLL control register */
+    __IO u(32) SYS_CLK1_CTRL;           /* offset: 0x0024, System clock 1 control register */
+    __IO u(32) SYS_CLK3_CTRL;           /* offset: 0x002C, System clock 3 control register */
+    __IO u(32) RESERVED1;               /* offset: 0x0030  */
+    __IO u(32) CODEC_CLK_CTRL;          /* offset: 0x0034, Audio clock control register */
+    __IO u(32) RESERVED2[8];            /* offset: 0x0038, ~ 0x0054 */
     __IO u(32) DCXO_CTRL;               /* offset: 0x0058, DCXO control register */
-    __IO u(32) RESERVED4[6];
+    __IO u(32) RESERVED4[5];            /* offset: 0x005c, ~ 0x006C */
+    __IO u(32) CONNBOOT_FLAG;           /* offset: 0x0070, Connect boot flag */
     __IO u(32) PWR_CTRL;                /* offset: 0x0074, power control register */
-    __IO u(32) RESERVED5[2];
-    __IO u(32) SYS1_RST_ST;             /* offset: 0x0080, system 1 status */
+    __IO u(32) RESERVED5[2];            /* offset: 0x0078, ~ 0x007C */
+    __IO u(32) SYS1_RST_ST;             /* offset: 0x0080, system 1 reset status */
     __IO u(32) SYS1_CTRL;               /* offset: 0x0084, system 1 control register */
     __IO u(32) RESERVED6[2];
     __IO u(32) SYS3_CTRL;               /* offset: 0x0090, system 3 control register */

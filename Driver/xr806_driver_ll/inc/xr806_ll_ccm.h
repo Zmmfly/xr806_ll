@@ -1,7 +1,7 @@
 #ifndef __XR806_LL_CCM_H__
 #define __XR806_LL_CCM_H__
 
-#include "xr806_ll_def.h"
+#include "xr806.h"
 
 #ifdef __cplusplus
 extern "C" {
